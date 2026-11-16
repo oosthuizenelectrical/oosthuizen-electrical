@@ -391,3 +391,26 @@ section[id]{scroll-margin-top:80px}
 .shot figcaption .loc,.promo-photo figcaption .loc{display:block;color:var(--muted);font-size:.84rem;font-weight:400;margin-top:2px}
 .shot figcaption .loc::before,.promo-photo figcaption .loc::before{content:"📍 "}
 .ba .shot{position:relative}
+.shot figcaption a.loc{text-decoration:underline;text-underline-offset:2px}
+.areas a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* call-out calculator */
+.rates-stack{display:flex;flex-direction:column;gap:18px}
+.co-calc select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+.co-tick{display:flex;align-items:center;gap:8px;margin:12px 0;font-size:.95rem;cursor:pointer}
+.co-tick input{width:18px;height:18px;accent-color:#111}
+.co-total{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:2.4rem;line-height:1;margin:6px 0 10px}
+.co-break{display:grid;grid-template-columns:1fr auto;margin:0 0 16px;font-size:.92rem}
+.co-break dt,.co-break dd{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
+.co-break dd{text-align:right;font-weight:600}
+.co-mini{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px}
+.co-mini h4{margin:0 0 12px;font-size:1.1rem}
+.co-mini .note{font-size:.85rem;color:var(--muted);margin:12px 0 0}
+.co-more summary{cursor:pointer;font-size:.9rem;font-weight:600;margin-bottom:8px}
+.co-full{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:1fr 1.2fr;gap:30px;align-items:start}
+.co-full label{font-weight:600;display:block;margin-bottom:8px}
+.co-full .co-tick{font-weight:400}
+.co-total-label{margin:0;color:var(--muted);font-size:.9rem}
+.co-full .co-total{font-size:3rem}
+.co-note{grid-column:1/-1;margin:0;font-size:.88rem;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:760px){.co-full{grid-template-columns:1fr;padding:22px}}

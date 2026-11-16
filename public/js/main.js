@@ -74,3 +74,29 @@
   ['c-km','c-l','c-p','c-e','c-s'].forEach(function(i){g(i).addEventListener('input',calc)});
   calc();
 })();
+
+/* call-out calculator */
+(function(){
+  var R=function(n){return 'R'+Math.round(n).toLocaleString('en-ZA').replace(/,/g,' ')};
+  document.querySelectorAll('.co-calc').forEach(function(box){
+    var d=box.dataset, sel=box.querySelector('.co-sub'), ah=box.querySelector('.co-ah');
+    var q=function(c){return box.querySelector(c)};
+    function run(){
+      var base=+(ah.checked?d.ah:d.base), wa=q('.co-wa');
+      if(!sel.value){q('.co-total').textContent='R—';['.co-b','.co-k','.co-t'].forEach(function(c){var e=q(c);if(e)e.textContent='—'});wa.href='https://wa.me/27635012986';return}
+      var p=sel.value.split(','), km=+p[0], min=+p[1], free=+d.free;
+      var extraKm=Math.max(0,km-free), share=km?extraKm/km:0;
+      var kmCost=extraKm*2*(+d.km);
+      var hrs=(min*share*2)/60, tCost=Math.round(hrs*(+d.hr)/10)*10;
+      var total=Math.round((base+kmCost+tCost)/10)*10;
+      var name=sel.options[sel.selectedIndex].text;
+      q('.co-total').textContent=(extraKm?'About ':'')+R(total);
+      q('.co-b').textContent=R(base);
+      q('.co-k').textContent=extraKm?R(kmCost)+' ('+(extraKm*2)+' km)':'R0 (within '+free+' km)';
+      q('.co-t').textContent=extraKm?R(tCost)+' (~'+Math.round(hrs*60)+' min)':'R0';
+      var msg='Hi Joha, I would like to book a'+(ah.checked?'n after-hours':'')+' call-out to '+name+'. The website estimate is '+R(total)+'.';
+      wa.href='https://wa.me/27635012986?text='+encodeURIComponent(msg);
+    }
+    sel.addEventListener('change',run); ah.addEventListener('change',run); run();
+  });
+})();
