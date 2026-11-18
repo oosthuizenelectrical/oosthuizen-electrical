@@ -1,3 +1,11 @@
+@font-face{font-family:"Barlow Condensed";src:url(/css/barlow-condensed-600.woff) format("woff");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url(/css/barlow-condensed-700.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(/css/inter-400.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(/css/inter-500.woff) format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(/css/inter-600.woff) format("woff");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(/css/inter-700.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Fallback";src:local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Neue Bold"),local("Roboto Bold"),local("Arial");font-weight:600 800;size-adjust:73.7%;ascent-override:135.7%;descent-override:27.1%;line-gap-override:0%}
+@font-face{font-family:"Inter Fallback";src:local("Arial"),local("ArialMT"),local("Helvetica Neue"),local("Roboto");size-adjust:105.5%;ascent-override:91.8%;descent-override:22.9%;line-gap-override:0%}
 :root{
   --ink:#111111;
   --ink-2:#2a2a2a;
@@ -9,8 +17,8 @@
   --orange-dark:#5a5a5a;
   --radius:14px;
   --max:1140px;
-  --head:"Barlow Condensed",system-ui,sans-serif;
-  --body:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --head:"Barlow Condensed","Barlow Fallback",sans-serif;
+  --body:"Inter","Inter Fallback",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:auto}
@@ -398,7 +406,7 @@ section[id]{scroll-margin-top:80px}
 .co-calc select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
 .co-tick{display:flex;align-items:center;gap:8px;margin:12px 0;font-size:.95rem;cursor:pointer}
 .co-tick input{width:18px;height:18px;accent-color:#111}
-.co-total{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:2.4rem;line-height:1;margin:6px 0 10px}
+.co-total{font-family:var(--head);font-weight:700;font-size:2.4rem;line-height:1;margin:6px 0 10px}
 .co-break{display:grid;grid-template-columns:1fr auto;margin:0 0 16px;font-size:.92rem}
 .co-break dt,.co-break dd{margin:0;padding:8px 0;border-bottom:1px solid var(--line)}
 .co-break dd{text-align:right;font-weight:600}

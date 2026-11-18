@@ -5,12 +5,12 @@
   function toTop(){
     if(hasTarget()) return;
     try{ window.scrollTo({top:0,left:0,behavior:'instant'}); }catch(e){ window.scrollTo(0,0); }
-    document.documentElement.scrollTop=0; document.body.scrollTop=0;
   }
-  toTop();
-  document.addEventListener('DOMContentLoaded',toTop);
-  window.addEventListener('load',function(){ toTop(); setTimeout(toTop,50); setTimeout(toTop,250); });
-  window.addEventListener('pageshow',toTop);
+  // Only scroll when the page is not already at the top. Reading scroll
+  // position is cheap; forcing a scroll during load caused layout reflows.
+  function toTopIfNeeded(){ if(window.pageYOffset>0) toTop(); }
+  window.addEventListener('load',function(){ requestAnimationFrame(toTopIfNeeded); });
+  window.addEventListener('pageshow',function(e){ if(e.persisted) requestAnimationFrame(toTopIfNeeded); });
   // smooth scrolling only for in-page jump links
   document.addEventListener('click',function(e){
     var a=e.target.closest && e.target.closest('a[href^="#"]'); if(!a) return;
